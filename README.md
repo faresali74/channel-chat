@@ -1,75 +1,209 @@
-# React + TypeScript + Vite
+# 💬 Channel Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern real-time chat application built with **React**, **TypeScript**, and **SignalR**, featuring secure JWT authentication, multiple chat channels, and Progressive Web App (PWA) support.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🔐 JWT Authentication
+- 👤 User Registration & Login
+- 📁 Multiple Chat Channels
+- ⚡ Real-time Messaging using SignalR
+- 🔄 Automatic Reconnection
+- 📱 Progressive Web App (PWA)
+- 🎨 Responsive UI
+- 🛡️ Protected Routes
+- 🌐 REST API Integration
+- ⚡ Fast build using Vite
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- SignalR Client
+- Vite PWA Plugin
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Backend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- ASP.NET Core Web API
+- SignalR
+- JWT Authentication
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📂 Project Structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+│
+├── components/
+│   ├── chat/
+│   └── ui/
+│
+├── Context/
+│
+├── pages/
+│
+├── routes/
+│
+├── services/
+│   ├── api.ts
+│   ├── authApi.ts
+│   ├── channelApi.ts
+│   ├── messageApi.ts
+│   └── signalr.ts
+│
+├── types/
+│
+└── App.tsx
 ```
+
+---
+
+## 🔄 Real-Time Communication
+
+The application uses **ASP.NET Core SignalR** for instant communication.
+
+### Hub Events
+
+### Client → Server
+
+- JoinChannel
+- SendMessage
+
+### Server → Client
+
+- JoinedChannel
+- NewMessage
+- UserJoined
+- UserLeft
+
+Automatic reconnection is enabled to recover from temporary network interruptions.
+
+---
+
+## 🔐 Authentication
+
+Authentication is handled using JWT Access Tokens.
+
+Every API request includes:
+
+```http
+Authorization: Bearer <access_token>
+```
+
+Protected pages are accessible only to authenticated users.
+
+---
+
+## 📱 Progressive Web App
+
+The application supports:
+
+- Installable on desktop & mobile
+- Offline shell caching
+- Fast loading
+- App-like experience
+
+Powered by:
+
+- vite-plugin-pwa
+- Workbox
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_API_BASE_URL=https://your-api-url
+VITE_SIGNALR_HUB_URL=https://your-api-url/channelHub
+```
+
+---
+
+## ▶️ Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/faresali74/channel-chat
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run development server
+
+```bash
+npm run dev
+```
+
+Build production version
+
+```bash
+npm run build
+```
+
+Preview production build
+
+```bash
+npm run preview
+```
+
+---
+
+## 🌍 Deployment
+
+Frontend is deployed on **Vercel**.
+
+---
+
+## 📸 Screenshots
+
+> Add screenshots of:
+>
+> - Login
+> - Register
+> - Channel Selection
+> - Chat Screen
+> - PWA Installation
+
+---
+
+## ✨ Future Improvements
+
+- Typing Indicator
+- Read Receipts
+- Message Editing
+- Message Deletion
+- Image Sharing
+- File Upload
+- Push Notifications
+- Emoji Support
+- Dark Mode
+
+---
+
+## 👨‍💻 Author
+
+**Fares Ali**
+
+- GitHub: https://github.com/faresali74
+- LinkedIn: https://www.linkedin.com/in/fares-ali74
+
+---
+
+## 📄 License
+
+This project is intended for educational and portfolio purposes.
