@@ -43,7 +43,7 @@ export async function apiRequest<T>(
       const error = await response.json();
       message = error.message ?? message;
     } catch {
-      // Ignore if response isn't JSON
+      // Ignore JSON parsing errors and use the default message
     }
 
     throw new ApiError(response.status, message);
